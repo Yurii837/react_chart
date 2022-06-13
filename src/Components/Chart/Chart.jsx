@@ -15,7 +15,9 @@ export const Chart = memo(({chartData}) => {
   }, []);
 
   const setFontSize = () => {
-    return document.body.offsetWidth / 50;
+    return document.body.offsetWidth / 50 < 30 
+      ? document.body.offsetWidth / 50
+      : 30
   };
 
   const preparedLabels = stringToArray(chartLabels);
