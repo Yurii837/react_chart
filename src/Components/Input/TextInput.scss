@@ -2,10 +2,8 @@
 
 .input {
   &__title {
-    font-family: 'Mukta', sans-serif;
-    font-weight: 400;
     font-size: 18px;
-    color: $colorLightHover;
+    color: $primaryColorHover;
     letter-spacing: 1px;
     margin: 0;
   }
@@ -13,7 +11,7 @@
   &__form {
     margin-bottom: 20px;
     :focus {
-      border: 2px solid $colorLightHover;
+      border: 2px solid $primaryColorHover;
     }
   }
 
@@ -21,13 +19,11 @@
     width: 60vw;
     height: 5vh;
     padding: 2px;
-    background-color: $colorLightHover;
+    background-color: $primaryColorHover;
     border: none;
     border-radius: 5px;
-    font-family: 'Mukta', sans-serif;
-    font-weight: 400;
     font-size: 16px;
-    color: $pageBackground;
+    color: $pageBackgroundColor;
     outline: none;
   }
 }

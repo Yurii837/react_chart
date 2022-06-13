@@ -16,7 +16,7 @@ export const Chart = memo(({chartData}) => {
 
   const setFontSize = () => {
     return document.body.offsetWidth / 50;
-  }
+  };
 
   const preparedLabels = stringToArray(chartLabels);
   const preparedValues = stringToArray(chartValues);
@@ -24,24 +24,23 @@ export const Chart = memo(({chartData}) => {
   const textColorHover =  vars.colorLightHover;
 
 
-const createRandomColorsArray = (labelsArray) => {
+  const createRandomColorsArray = useCallback((labelsArray) => {
+    const resArr = [];
+    const transparentStep = 0.5 / labelsArray.length;
+    let transpValue = 0.1 + transparentStep;
 
-  const resArr = [];
-  const transparentStep = 0.5 / labelsArray.length;
-  let transpValue = 0.1 + transparentStep;
+    const randomHslColor = (Math.random() * 360);
+    const createColor = (transparentValue) => {
+      return `hsla(${(randomHslColor)}, 100%, 50%, ${transparentValue})`;
+    };
 
-  const randomHslColor = (Math.random() * 360);
-  const createColor = (transparentValue) => {
-    return `hsla(${(randomHslColor)}, 100%, 50%, ${transparentValue})`;
-  }
+    labelsArray.forEach(() => {
+      resArr.push(createColor(transpValue));
+      transpValue += transparentStep;
+    });
 
-  labelsArray.forEach(() => {
-    resArr.push(createColor(transpValue));
-    transpValue += transparentStep;
-  })
-  return resArr;
-
-}
+    return resArr;
+  }, []);
 
   const preparedData = useMemo(() => {
     return {
@@ -58,55 +57,59 @@ const createRandomColorsArray = (labelsArray) => {
         tension: 0.5,
       }],
     }
-  }, [preparedLabels, preparedValues, textColor, textColorHover])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [preparedLabels, preparedValues, textColor, textColorHover]);
 
- const defaultOptions = {
-  scales: {
-    y: {
-      grid: {
-        color: textColor,
+  const customOptions = {
+    scales: {
+      y: {
+        grid: {
+          color: textColor,
+        },
+        beginAtZero: true,
+        max: Math.ceil(Math.max(...preparedValues) * 1.1), 
+          ticks: {
+            font: {
+              size: setFontSize()
+            },
+            color: textColor,
+          }
       },
-      beginAtZero: true,
-      max: Math.ceil(Math.max(...preparedValues) * 1.1), 
+      x: {
+        grid: {
+          color: textColor,
+        },
         ticks: {
           font: {
-            size: setFontSize()
+            size: setFontSize(),
           },
           color: textColor,
         }
-    },
-    x: {
-      grid: {
-        color: textColor,
-      },
-      ticks: {
-        font: {
-          size: setFontSize(),
-        },
-        color: textColor,
       }
-    }
 
-  },
-  layout: {
-    padding: setFontSize(),
-  },
-  elements: {
+    },
+
+    layout: {
+      padding: setFontSize(),
+    },
+
+    elements: {
       line: {
         fill: false
       }
-  },
-  plugins: {
-    legend: {
+    },
+
+    plugins: {
+      legend: {
         labels: {
-            font: {
-                size: setFontSize(),
-            },
-            color: textColor,
+          font: {
+              size: setFontSize(),
+          },
+          color: textColor,
         }
+      }
     }
-}
-}
+  };
 
   console.log(`Chart,render type-${chartType}`);
 
@@ -115,14 +118,14 @@ const createRandomColorsArray = (labelsArray) => {
     case 'bar':
       return (
         <div className="chart">
-          <Bar data={preparedData} options={defaultOptions}/>
+          <Bar data={preparedData} options={customOptions}/>
           {console.log(`Call bar ${preparedData}`)}
         </div>
       )
     case 'line':
       return (
         <div className="chart">
-          <Line data={preparedData} options={defaultOptions}/>
+          <Line data={preparedData} options={customOptions}/>
           {console.log(`Call line ${preparedData}`)}
         </div>
       )

@@ -1,11 +1,11 @@
-$pageBackground: rgb(57, 61, 79);
-$colorLight: rgba(217, 251, 252, 0.5);
-$colorLightHover: rgba(217, 251, 252, 0.8);
-$colorBorder: rgba(99, 121, 173, 0.8);
+$pageBackgroundColor: rgb(57, 61, 79);
+$primaryColor: rgba(217, 251, 252, 0.5);
+$primaryColorHover: rgba(217, 251, 252, 0.8);
+$borderColor: rgba(99, 121, 173, 0.8);
 
 $colorSecondary: rgba(3, 83, 255, 0.9);
 
 :export {
-  colorLight: $colorLight;
-  colorLightHover: $colorLightHover;
+  colorLight: $primaryColor;
+  colorLightHover: $primaryColorHover;
 }

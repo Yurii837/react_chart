@@ -1,12 +1,10 @@
 @import './Variables.scss';
 
 .page {
-    padding: 40px;
+  padding: 40px;
 
-    &__title {
-      font-family: 'Mukta', sans-serif;
-      font-weight: 400;
-      color: $colorLightHover;
-      letter-spacing: 2px;
-    }
+  &__title {
+    color: $primaryColorHover;
+    letter-spacing: 2px;
+  }
 }
