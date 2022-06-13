@@ -68,12 +68,12 @@ export const Chart = memo(({chartData}) => {
         },
         beginAtZero: true,
         max: Math.ceil(Math.max(...preparedValues) * 1.1), 
-          ticks: {
-            font: {
-              size: setFontSize()
-            },
-            color: textColor,
-          }
+        ticks: {
+          font: {
+            size: setFontSize()
+          },
+          color: textColor,
+        }
       },
       x: {
         grid: {
@@ -86,7 +86,6 @@ export const Chart = memo(({chartData}) => {
           color: textColor,
         }
       }
-
     },
 
     layout: {
@@ -111,27 +110,22 @@ export const Chart = memo(({chartData}) => {
     }
   };
 
-  console.log(`Chart,render type-${chartType}`);
-
-
   switch (chartType) {
     case 'bar':
       return (
         <div className="chart">
           <Bar data={preparedData} options={customOptions}/>
-          {console.log(`Call bar ${preparedData}`)}
         </div>
-      )
+      );
     case 'line':
       return (
         <div className="chart">
           <Line data={preparedData} options={customOptions}/>
-          {console.log(`Call line ${preparedData}`)}
         </div>
-      )
+      );
     default:
       return (
-        <h2>Default chart</h2>
-      ) 
-  }
-})
+        <h2>Please select chart type</h2>
+      );
+  };
+});

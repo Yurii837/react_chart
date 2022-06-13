@@ -13,8 +13,16 @@ const App = () => {
   return (
     <div className="page">
       <div className="page__inputs">
-        <TextInput handleChange={setChartLabels} inputName={'Labels'} axis={'X'}/>
-        <TextInput handleChange={setChartValues} inputName={'Values'} axis={'Y'}/>
+        <TextInput 
+          handleChange={setChartLabels}
+          inputName={'Labels'} 
+          axis={'X'}
+        />
+        <TextInput 
+          handleChange={setChartValues} 
+          inputName={'Values'} 
+          axis={'Y'}
+        />
       </div>
     
       {chartLabels.length > 0 && chartValues.length > 0
