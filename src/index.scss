@@ -1,0 +1,12 @@
+@import './Variables.scss';
+
+body {
+  margin: 0;
+  background-color: $pageBackground;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}

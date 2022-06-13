@@ -1,6 +1,7 @@
 import React, { useCallback, useState, memo } from 'react';
+import './TextInput.scss';
 
-export const TextInput = memo(({handleChange, inputName}) => {
+export const TextInput = memo(({handleChange, inputName, axis}) => {
   const [value, setValue] = useState('');
 
   const convertString = useCallback((string) => {
@@ -21,18 +22,21 @@ export const TextInput = memo(({handleChange, inputName}) => {
   console.log(`TextInput render ${inputName}`)
 
   return (  
-    <form onSubmit={handleSubmit}>
+    <>
+    <h3 className="input__title">{`${axis} axis ${inputName}`}</h3>
+    <form className="input__form" onSubmit={handleSubmit}>
       <input
-        className="form__input"
+        className="input__body"
         required
         type="text"
         name={inputName} 
         value={value}
         onChange={event =>setValue(event.target.value)}
         onBlur={handleSubmit}
-        placeholder={`Please input chart${inputName}`}
+        placeholder={`Please input chart ${inputName}`}
         autoComplete="off"
       />
     </form> 
+    </>
   )
 });

@@ -1,0 +1,33 @@
+@import '../../Variables.scss';
+
+.input {
+  &__title {
+    font-family: 'Mukta', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: $colorLightHover;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  &__form {
+    margin-bottom: 20px;
+    :focus {
+      border: 2px solid $colorLightHover;
+    }
+  }
+
+  &__body {
+    width: 60vw;
+    height: 5vh;
+    padding: 2px;
+    background-color: $colorLightHover;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: $pageBackground;
+    outline: none;
+  }
+}

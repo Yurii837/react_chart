@@ -1,0 +1,51 @@
+@import '../../Variables.scss';
+
+
+$text-color: $colorLight;
+
+.radio {
+  color:  mix($colorSecondary, $colorLightHover, 25%);
+  font-size: 1em;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+  cursor: pointer;
+
+  margin-bottom: 0.375em;
+
+  input {
+    display: none;
+    &:checked + span {
+      &:before {
+        box-shadow: inset 0 0 2px 0.4375em $pageBackground;
+      }
+    }
+  }
+  span {
+    display: flex;
+    align-items: center;
+    padding: 0.375em;
+    transition: 0.25s ease;
+  
+    &:before {
+      display: flex;
+      flex-shrink: 0;
+      content: "";
+      background-color: mix($colorSecondary, $colorLightHover, 25%);
+      font-size: 1em;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      margin-right: 0.375em;
+      transition: 0.25s ease;
+      box-shadow: inset 0 0 2px 0.125em $colorLightHover;
+    }
+  }
+}
