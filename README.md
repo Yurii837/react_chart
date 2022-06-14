@@ -9,4 +9,4 @@ IDE: VSCode, Chrome DevTools
 
 Methodologies: BEM
 
-Additional NPM tools: chart.js, react-chart-2, sass, sass-loader 
+Additional NPM tools: gh-pages, npx, chart.js, react-chart-2, sass, sass-loader

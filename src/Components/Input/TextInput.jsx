@@ -4,17 +4,18 @@ import './TextInput.scss';
 export const TextInput = memo(({handleChange, inputName, axis}) => {
   const [value, setValue] = useState('');
 
-  //I don't understand why it works weird :)
-  const convertString = useCallback((string) => {
-    // return string.split(/(?:,| )+/).join(', ');
-    return string;
+  const prepareString = useCallback((string) => {
+    const strArr =  string.split(' ').join(',').split(',');
+    const resArr = strArr.filter(el => !!el);
+    return resArr.join(',');
   }, []);
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
-    setValue(convertString(value));
-    handleChange(value);
-  }, [convertString, handleChange, value]);
+    const preparedValue = prepareString(value);
+    setValue(preparedValue);
+    handleChange(preparedValue);
+  }, [handleChange, prepareString, value]);
 
   return (  
     <>
